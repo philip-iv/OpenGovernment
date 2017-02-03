@@ -9,13 +9,13 @@
     display: flex;
     list-style: none;
     background: darkblue;
-    padding: 0;
+    padding: 0 0 0 15;
     margin: 5 0 0 0;
 }
 
 .nav-element {
     background-color: blue;
-    padding: 5px;
+    padding: 5;
     color: white;
     text-decoration: none;
 }
