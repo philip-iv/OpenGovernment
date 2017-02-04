@@ -18,8 +18,8 @@ class Congressman(Person):
     elected = models.DateField(null=True)
     in_office = models.BooleanField(default=False)
     
-    def __str__(self):
-        return self.first_name + ' ' + self.last_name + ' (' + self.party + '-' + self.state + ')'
+    def __unicode__(self):
+        return u'%s %s (%s-%s)' % (self.first_name, self.last_name, self.party, self.state)
 
 class Senator(Congressman):
     seniority = models.CharField(max_length=1)
