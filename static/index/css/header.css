@@ -13,19 +13,40 @@
     margin: 5 0 0 0;
 }
 
+.nav-link {
+    text-decoration: none;
+    color: white;
+}
+
 .nav-element {
     background-color: blue;
     padding: 5;
     color: white;
-    text-decoration: none;
+    border-left: 1px solid white;
+}
+
+.nav-element-end {
+    border-right: 1px solid white;
 }
 
 body {
     margin: 0;
+    background: grey;
 }
 
 .logo {
     color: white;
     margin: 0;
     padding: 0;
+}
+
+.main-body-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: auto;
+    background: white;
+}
+
+.main-body {
+    padding: 10 15;
 }

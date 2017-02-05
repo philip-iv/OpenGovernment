@@ -1,0 +1,19 @@
+<head>
+    <title>Clear Government</title>
+</head>
+
+<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'index/css/header.css' %}">
+
+<div class="nav-container nav">
+    <div class="logo"><p class="logo">Open</p><p class="logo">Gov</p></div>
+    <ul class="nav-list nav">
+        <li class="nav-element nav"><a class="nav-link nav" href="{% url 'index' %}">Home</a></li>
+        <li class="nav-element nav"><a class="nav-link nav" href="{% url 'about' %}">About</a></li>
+        <li class="nav-element nav-element-end nav"><a class="nav-link nav" href="{% url 'us_index' %}">US</a></li>
+    </ul>
+</div>
+
+<div class="main-body-container">
+    <div class="main-body">

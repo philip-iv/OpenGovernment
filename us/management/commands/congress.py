@@ -3,10 +3,12 @@ import urllib
 import csv
 from datetime import datetime
 import django
+import os
 
 from django.db import models
 from django.core.management.base import BaseCommand, CommandError
-from us.models import Senator, Representative, Person
+from us.models import Person
+from us.congress.models import Congressman, Senator, Representative
 
 def get_csv(file_name):
     urllib.urlretrieve('http://unitedstates.sunlightfoundation.com/legislators/legislators.csv', file_name)
@@ -55,7 +57,7 @@ def read_csv(file_name):
         for row in reader:
             person = get_person(row)
             person.party = row['party']
-            person.in_office = bool(row['in_office'])
+            person.in_office = bool(int(row['in_office']))
             person.save()
             
 class Command(BaseCommand):
@@ -65,3 +67,4 @@ class Command(BaseCommand):
         file_name = 'legislators.csv'
         get_csv(file_name)
         read_csv(file_name)
+        #os.remove(file_name)
