@@ -15,38 +15,32 @@ def get_csv(file_name):
 
 def get_person(row):
     try:
-        first = row['firstname']
-        last = row['lastname']
-        dob = datetime.strptime(row['birthdate'], '%Y-%m-%d').date()
-        person = Person.objects.get(first_name=first, last_name=last, birth=dob)
+        bioguide_id = row['bioguide_id']
+        person = Congressman.objects.get(bioguide_id=bioguide_id)
     except:
         office = row['title']
-        middle = row['middlename']
-        suffix = row['name_suffix']
-        gender = row['gender']
-        state = row['state']
         per = None
         if office == 'Sen':
             per = Senator()
             per.seniority = row['district'][0]
         else:
             per = Representative()
-            per.district = row['district']
-        per.first_name = first
-        per.middle_name = middle
-        per.last_name = last
-        per.suffix = suffix
-        per.gender = gender
-        per.birth = dob
-        per.state = state
+            per.district = int(row['district'])
+        per.bioguide_id = row['bioguide_id']
+        per.birth = datetime.strptime(row['birthdate'], '%Y-%m-%d').date()
+        per.first_name = row['firstname']
+        per.middle_name = row['middlename']
+        per.suffix = row['name_suffix']
+        per.gender = row['gender']
+        per.state = row['state']
         return per
     
     try:
-        return person.congressman.senator
+        return person.senator
     except:
         pass
     try:
-        return person.congressman.representative
+        return person.representative
     except:
         pass
     return person
@@ -56,15 +50,17 @@ def read_csv(file_name):
         reader = csv.DictReader(file)
         for row in reader:
             person = get_person(row)
+            person.last_name = row['lastname']
             person.party = row['party']
             person.in_office = bool(int(row['in_office']))
             person.save()
             
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        #Senator.objects.all().delete()
-        #Representative.objects.all().delete()
+        Senator.objects.all().delete()
+        Representative.objects.all().delete()
+        Person.objects.all().delete()
         file_name = 'legislators.csv'
-        get_csv(file_name)
+        #get_csv(file_name)
         read_csv(file_name)
         #os.remove(file_name)

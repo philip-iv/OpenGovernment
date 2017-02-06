@@ -4,9 +4,9 @@
 </div>
 <h1>United States Senators from {{state}}</h1>
 
-<h2>{{S_name}}</h2>
+<h2><a href="{% url 'us_senate_individual' state S_first_name S_last_name %}">{{S_name}}</a></h2>
 <p>Senior senator from the state</p>
-<h2>{{J_name}}</h2>
+<h2><a href="{% url 'us_senate_individual' state J_first_name J_last_name %}">{{J_name}}</a></h2>
 <p>Junior senator from the state</p>
 
 {% include 'index/footer.html' %}

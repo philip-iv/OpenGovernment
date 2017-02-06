@@ -1,0 +1,8 @@
+{% include 'index/header.html' %}
+<div>
+    <a href="{% url 'us_index' %}">US</a> > <a href="{% url 'us_senate_index' %}">Senate</a> > <a href="{% url 'us_senate_state' state %}">{{state}}</a> > {{name}}
+</div>
+<h1>United States Senator {{name}} from {{state}}</h1>
+<img src="https://theunitedstates.io/images/congress/450x550/{{id}}.jpg" alt="Senator image">
+<p>Insert biographic data here</p>
+{% include 'index/footer.html' %}

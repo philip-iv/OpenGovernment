@@ -10,5 +10,5 @@ class Person(models.Model):
     gender = models.CharField(max_length=1)
     hometown = models.CharField(max_length=100)
     party = models.CharField(max_length=10)
-    birth = models.DateField()
+    birth = models.DateField(null=True)
     image = models.FileField()

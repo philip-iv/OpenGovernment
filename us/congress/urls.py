@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'senate/?$', views.senate_index, name='us_senate_index'),
     url(r'house/?$', views.house_index, name='us_house_index'),
     url(r'senate/%s/?$' % state_regex, views.senate_state, name='us_senate_state'),
+    url(r'senate/%s/([a-zA-Z]*)_([a-zA-Z]*)/?$' % state_regex, views.senate_individual, name='us_senate_individual'),
+    url(r'senate/committees/?$', views.senate_committees, name='us_senate_committees'),
 ]

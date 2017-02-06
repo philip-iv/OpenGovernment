@@ -7,7 +7,11 @@ class Congressman(Person):
     state = models.CharField(max_length=2)
     elected = models.DateField(null=True)
     in_office = models.BooleanField(default=False)
+    bioguide_id = models.CharField(max_length=7, primary_key=True)
     
+    class Meta:
+        abstract = True
+        
     def __unicode__(self):
         return u'%s %s (%s-%s)' % (self.first_name, self.last_name, self.party, self.state)
 
@@ -15,4 +19,4 @@ class Senator(Congressman):
     seniority = models.CharField(max_length=1)
 
 class Representative(Congressman):
-    district = models.IntegerField()
+    district = models.IntegerField(null=True)
