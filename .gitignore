@@ -1,1 +1,8 @@
-/opengov/secret_key.py
+*.pyc
+
+#secret key
+/app/opengov/secret_key.py
+
+#vagrant files
+ubuntu-xenial-*
+/.vagrant/

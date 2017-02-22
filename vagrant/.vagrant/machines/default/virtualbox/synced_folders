@@ -1,0 +1,1 @@
+{"virtualbox":{"/app":{"guestpath":"/app","hostpath":"C:/Users/Philip/Code/OpenGovernment/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Philip/Code/OpenGovernment/vagrant","disabled":false,"__vagrantfile":true}}}
